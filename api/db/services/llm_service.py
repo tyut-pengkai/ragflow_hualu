@@ -296,7 +296,7 @@ class LLMBundle(object):
         return txt
     ############################################################################################################
     def chat_streamly(self, system, history, gen_conf):
-        logging.info("进入方法1111111111111111111")
+        #logging.info("进入方法1111111111111111111")
         for txt in self.mdl.chat_streamly(system, history, gen_conf):
             if isinstance(txt, int):
                 logging.info("isinstance(txt, int)")

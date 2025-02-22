@@ -19,7 +19,7 @@ export const useUserInfo = () => {
   const fetchUserInfo = async () => {
     try {
       const response = await userService.user_info();
-      console.log('Server user info response:', response);
+      
       
       if (response?.data?.code === 0 && response?.data?.data) {
         const userInfo = {
@@ -49,7 +49,7 @@ export const useUserInfo = () => {
     queryKey: ['userInfo'],
     queryFn: fetchUserInfo,
     // 配置：
-    staleTime: 30000, // 数据30秒内认为是新鲜的
+    staleTime: 3600000, // 数据30秒内认为是新鲜的
     cacheTime: 3600000, // 缓存1小时
     refetchOnWindowFocus: true, // 窗口获得焦点时重新获取
     refetchOnMount: 'always', // 组件每次挂载时都重新获取

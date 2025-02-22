@@ -52,8 +52,12 @@ const SearchPage = () => {
 
   useEffect(() => {
     if (!isInitialized && knowledgeList.length > 0) {
-      setCheckedList([knowledgeList[0].id]);
-      setIsInitialized(true);
+      // 找到第一个名字中不包含"后台"的知识库
+      const firstVisibleKb = knowledgeList.find(kb => !kb.name.includes('后台'));
+      if (firstVisibleKb) {
+        setCheckedList([firstVisibleKb.id]);
+        setIsInitialized(true);
+      }
     }
   }, [knowledgeList, isInitialized]);
 

@@ -30,7 +30,8 @@ const SearchSidebar = ({
   const { list, loading } = useFetchKnowledgeList();
 
   const groupedList = useMemo(() => {
-    return list.reduce((pre: TreeDataNode[], cur) => {
+    const filteredList = list.filter((kb) => !kb.name.includes('后台'));
+    return filteredList.reduce((pre: TreeDataNode[], cur) => {
       const parentItem = pre.find((x) => x.key === cur.embd_id);
       const childItem: TreeDataNode = {
         title: cur.name,
